@@ -1,0 +1,39 @@
+- hosts: all
+  connection: ssh
+  become: true
+
+  tasks:
+    - name: Remove the default user
+      user:
+        name: ubuntu
+        state: absent
+        remove: true
+
+    - name: Copy vimrc
+      copy:
+        src: vimrc
+        dest: "~{{base_user}}/.vimrc"
+        owner: "{{base_user}}"
+        mode: 0600
+    
+    - name: Copy tmux config
+      copy:
+        src: tmux.conf
+        dest: '~{{base_user}}/.tmux.conf'
+        owner: "{{base_user}}"
+        mode: 0600
+
+    - name: Update Apt
+      apt:
+        update-cache: yes
+        upgrade: dist
+
+    - name: Apt packages
+      apt:
+        name:
+            - tmux
+            - vim-nox
+            - snapd
+            - python3.9
+            - htop
+

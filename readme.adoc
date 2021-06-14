@@ -1,0 +1,14 @@
+= Base Ansible Server Setup
+
+Installs base apt packages that are common to all infrastructure
+servers.
+
+== To Use
+Rename inventory.config to inventory.  If you are not using an ed2519
+key for ssh, then edit the ansible.cfg and populate this with your
+key.   
+
+Up front - you will need to create your base user on all servers and
+ensure your public key is on all of them.
+
+TODO: Need to make the base user configurable.

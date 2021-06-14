@@ -1,0 +1,77 @@
+"====================================================================
+" General Config
+"====================================================================
+syntax enable
+" set -g default-terminal "screen-256color"
+set esckeys
+set shiftwidth=4
+set noexpandtab
+set splitbelow
+set tabstop=4
+set ruler
+set bs=2
+set nu
+set ai
+set showmode
+set showcmd
+set nocompatible
+set hlsearch 
+set spell
+set fileformat=unix
+set textwidth=79
+set cm=blowfish2
+filetype off
+
+filetype plugin on
+
+" Folding handler to fold based on indent.
+highlight Folded ctermfg=yellow ctermbg=NONE
+set foldtext=getline(v:foldstart)
+set fdm=indent
+set fdc=0
+
+" Other Custom Commands
+"====================================================================
+
+" For editing text (not code)
+"       - text width is on the window size
+"       - Word wrap on
+"       - Linebreak
+"       - No numbers
+"       - No auto indent
+
+
+
+autocmd FileType make set noexpandtab
+
+" enable all Python syntax highlighting features
+let python_highlight_all = 1
+
+"====================================================================
+" Keyboard and replacement shortcuts
+"====================================================================
+
+" Map {- to display a brace pair
+inoremap {- {<enter>}<esc>k$A<enter>
+
+inoremap ,dc /**<enter><space>*<enter>*/<esc>k$A<space>
+
+" Insert date at the end of the line on f5
+inoremap <f5> <C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>
+
+" Space can now expand/collapse folds
+vmap <space> zf
+nmap <space> za
+
+"Titleize Selected text
+vmap ,c :s/\<\(.\)\(\k*\)\>/\u\1\L\2/g<CR>
+
+" Tab navigation for creating and moving between tabs.
+nmap <C-S-j> :tabprevious<cr>
+nmap <C-S-k> :tabnext<cr>
+map <C-S-j> :tabprevious<cr>
+map <C-S-k> :tabnext<cr>
+map <C-t> :tabnew<cr>
+imap <C-S-j> <esc>:tabprevious<cr>i
+imap <C-S-k> <esc>:tabnext<cr>i
+
