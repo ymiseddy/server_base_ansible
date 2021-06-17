@@ -2,7 +2,10 @@
 " General Config
 "====================================================================
 syntax enable
+set nocompatible
+
 " set -g default-terminal "screen-256color"
+set t_Co=256
 set esckeys
 set shiftwidth=4
 set noexpandtab
@@ -14,15 +17,36 @@ set nu
 set ai
 set showmode
 set showcmd
-set nocompatible
 set hlsearch 
-set spell
 set fileformat=unix
+
+" Max text width
 set textwidth=79
+
+" Ensure encryption mode is set to the strongest.
 set cm=blowfish2
+
+" Visual bells (stops the chime on errors)
+set vb
 filetype off
 
 filetype plugin on
+
+
+" Show tab guides
+set list lcs=tab:\|\ 
+
+" Custom Highlight colors
+highlight Search ctermbg=237
+highlight CursorColumn ctermbg=234
+highlight Visual cterm=NONE ctermbg=237
+highlight SpellBad cterm=NONE ctermbg=124 ctermfg=250
+
+" Show tab guides
+set list lcs=tab:\|\  
+highlight SpecialKey term=NONE cterm=NONE ctermfg=237
+
+set cursorcolumn
 
 " Folding handler to fold based on indent.
 highlight Folded ctermfg=yellow ctermbg=NONE
